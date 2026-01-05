@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 const AboutUsSection = () => {
   return (
-    <section className="py-20 bg-white overflow-hidden relative">
+    <section id="about" className="py-20 bg-white overflow-hidden relative">
       {/* Background Decoration */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-[var(--color-secondary)]/30 skew-x-12 translate-x-1/2 z-0"></div>
 
