@@ -9,6 +9,7 @@ const ApplyModal = () => {
     phone: "",
     email: "",
     loanType: "Personal Loan",
+    loanAmount: "",
     city: "",
     monthlyIncome: "",
   });
@@ -35,6 +36,7 @@ const ApplyModal = () => {
           phone: "",
           email: "",
           loanType: "Personal Loan",
+          loanAmount: "",
           city: "",
           monthlyIncome: "",
         });
@@ -149,19 +151,36 @@ const ApplyModal = () => {
                     <option value="Business Loan">Business Loan</option>
                   </select>
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Monthly Income (₹)
-                  </label>
-                  <input
-                    type="number"
-                    name="monthlyIncome"
-                    required
-                    value={formData.monthlyIncome}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--color-brand)] focus:border-transparent outline-none transition-all"
-                    placeholder="5000"
-                  />
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Loan Amount (₹)
+                    </label>
+                    <input
+                      type="number"
+                      name="loanAmount"
+                      required
+                      max="500000000"
+                      value={formData.loanAmount}
+                      onChange={handleChange}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--color-brand)] focus:border-transparent outline-none transition-all"
+                      placeholder="Ex: 500000"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Monthly Income (₹)
+                    </label>
+                    <input
+                      type="number"
+                      name="monthlyIncome"
+                      required
+                      value={formData.monthlyIncome}
+                      onChange={handleChange}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--color-brand)] focus:border-transparent outline-none transition-all"
+                      placeholder="5000"
+                    />
+                  </div>
                 </div>
               </div>
 

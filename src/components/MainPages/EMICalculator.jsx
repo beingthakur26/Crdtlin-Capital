@@ -66,7 +66,7 @@ const EMICalculator = () => {
                   <input
                     type="number"
                     min="1000"
-                    max="500000"
+                    max="500000000"
                     value={amount}
                     onChange={(e) => setAmount(Number(e.target.value))}
                     className="w-full outline-none text-[var(--color-brand)] font-bold"
@@ -76,15 +76,15 @@ const EMICalculator = () => {
               <input
                 type="range"
                 min="1000"
-                max="500000"
-                step="1000"
+                max="500000000"
+                step="10000"
                 value={amount}
                 onChange={(e) => setAmount(Number(e.target.value))}
                 className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[var(--color-cta)]"
               />
               <div className="flex justify-between text-xs text-gray-500 font-medium">
                 <span>₹1K</span>
-                <span>₹500K</span>
+                <span>₹50 Cr</span>
               </div>
             </div>
 

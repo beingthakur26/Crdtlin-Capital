@@ -1,14 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  Facebook,
-  Twitter,
-  Instagram,
-  Linkedin,
-  MapPin,
-  Phone,
-  Mail,
-} from "lucide-react";
+import { Instagram, Linkedin, MapPin, Phone, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -32,26 +24,20 @@ const Footer = () => {
             </p>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://www.instagram.com/crdtlin.capital"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 bg-white/10 rounded-full hover:bg-[var(--color-cta)] transition-colors"
-              >
-                <Facebook size={18} />
-              </a>
-              <a
-                href="#"
-                className="p-2 bg-white/10 rounded-full hover:bg-[var(--color-cta)] transition-colors"
-              >
-                <Twitter size={18} />
-              </a>
-              <a
-                href="#"
-                className="p-2 bg-white/10 rounded-full hover:bg-[var(--color-cta)] transition-colors"
+                aria-label="Instagram"
               >
                 <Instagram size={18} />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/company/crdtlin-capital1/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 bg-white/10 rounded-full hover:bg-[var(--color-cta)] transition-colors"
+                aria-label="LinkedIn"
               >
                 <Linkedin size={18} />
               </a>
@@ -137,6 +123,14 @@ const Footer = () => {
                   Business Loan
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="/services/balance-transfer"
+                  className="text-blue-200 hover:text-white hover:translate-x-1 transition-all inline-block"
+                >
+                  Balance Transfer
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -155,11 +149,21 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3 text-blue-200">
                 <Phone className="w-5 h-5 text-[var(--color-cta)] flex-shrink-0" />
-                <span>+91 98765 43210</span>
+                <a
+                  href="tel:+918291223678"
+                  className="hover:text-white transition-colors"
+                >
+                  +91 82912 23678
+                </a>
               </li>
               <li className="flex items-center gap-3 text-blue-200">
                 <Mail className="w-5 h-5 text-[var(--color-cta)] flex-shrink-0" />
-                <span>support@crdtlin.com</span>
+                <a
+                  href="mailto:info@crdtlincapital.com"
+                  className="hover:text-white transition-colors"
+                >
+                  info@crdtlincapital.com
+                </a>
               </li>
             </ul>
           </div>

@@ -2,10 +2,12 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigation from "./components/MainPages/Navigation";
 import HeroSection from "./components/MainPages/HeroSection";
+import AssuranceSection from "./components/MainPages/AssuranceSection";
 import Services from "./components/MainPages/Services";
 import PersonalLoan from "./components/LoanPages/PersonalLoan";
 import HomeLoan from "./components/LoanPages/HomeLoan";
 import BusinessLoan from "./components/LoanPages/BusinessLoan";
+import BalanceTransfer from "./components/LoanPages/BalanceTransfer";
 import ContactUs from "./components/MainPages/ContactUs";
 import Footer from "./components/MainPages/Footer";
 
@@ -35,6 +37,7 @@ const App = () => {
                 element={
                   <>
                     <HeroSection />
+                    <AssuranceSection />
                     <Testimonials />
                     <Services />
                     <EMICalculator />
@@ -53,6 +56,10 @@ const App = () => {
               <Route
                 path="/services/business-loan"
                 element={<BusinessLoan />}
+              />
+              <Route
+                path="/services/balance-transfer"
+                element={<BalanceTransfer />}
               />
               <Route path="/contact" element={<ContactUs />} />
               <Route path="/about" element={<About />} />
