@@ -83,12 +83,12 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a
-                  href="/about#terms"
+                <Link
+                  to="/terms-and-conditions"
                   className="text-blue-200 hover:text-white hover:translate-x-1 transition-all inline-block"
                 >
                   Terms & Conditions
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -143,8 +143,8 @@ const Footer = () => {
               <li className="flex items-start gap-3 text-blue-200">
                 <MapPin className="w-5 h-5 text-[var(--color-cta)] flex-shrink-0 mt-1" />
                 <span>
-                  123 Finance District, Tower C, Business Park, New Delhi -
-                  110001
+                  102/103/104 Shree Apartment, Near Panchamrut Restaurant, Virar
+                  East, 401303
                 </span>
               </li>
               <li className="flex items-center gap-3 text-blue-200">

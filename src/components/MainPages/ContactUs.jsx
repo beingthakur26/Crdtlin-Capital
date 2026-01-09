@@ -1,25 +1,30 @@
-import React, { useState } from "react";
-import { Mail, MapPin, Phone, Send, Clock, MessageSquare } from "lucide-react";
+import React, { useRef } from "react";
+import { Mail, MapPin, Phone, Send } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 const ContactUs = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const formRef = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Logic to handle form submission would go here
-    console.log("Form submitted:", formData);
-    alert("Thank you for contacting us! We will get back to you shortly.");
-    setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+
+    emailjs
+      .sendForm(
+        "service_heq88mg",
+        "template_41n3zfb",
+        formRef.current,
+        "ymflJ9jqcWObQUS1t"
+      )
+      .then(
+        () => {
+          alert("Message sent successfully");
+          formRef.current.reset();
+        },
+        (error) => {
+          console.error("EmailJS Error:", error);
+          alert("Failed to send message");
+        }
+      );
   };
 
   return (
@@ -51,10 +56,10 @@ const ContactUs = () => {
               <h3 className="text-xl font-bold text-gray-900 mb-2">Call Us</h3>
               <p className="text-gray-500 mb-4">Mon-Sat from 9am to 7pm.</p>
               <a
-                href="tel:+919876543210"
+                href="tel:+918291223678"
                 className="text-[#0F4C81] font-semibold hover:text-[var(--color-cta)]"
               >
-                +91 98765 43210
+                +91 82912 23678
               </a>
             </div>
 
@@ -67,10 +72,10 @@ const ContactUs = () => {
                 Our friendly team is here to help.
               </p>
               <a
-                href="mailto:support@crdtlin.com"
+                href="mailto:info@crdtlincapital.com"
                 className="text-[#0F4C81] font-semibold hover:text-[var(--color-cta)]"
               >
-                support@crdtlin.com
+                info@crdtlincapital.com
               </a>
             </div>
 
@@ -82,11 +87,18 @@ const ContactUs = () => {
               <p className="text-gray-500 mb-4">
                 Come say hello at our office HQ.
               </p>
-              <p className="text-gray-900 font-medium">
-                123 Finance District, Tower C,
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=102/103/104+Shree+Apartment,+Near+Panchamrut+Restaurant,+Virar+East,+401303"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#0F4C81] font-medium hover:text-[var(--color-cta)] block"
+              >
+                102/103/104 Shree Apartment,
                 <br />
-                New Delhi - 110001
-              </p>
+                Near Panchamrut Restaurant,
+                <br />
+                Virar East, 401303
+              </a>
             </div>
           </div>
 
@@ -104,21 +116,23 @@ const ContactUs = () => {
                   </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form
+                  ref={formRef}
+                  onSubmit={handleSubmit}
+                  className="space-y-6"
+                >
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label
-                        htmlFor="name"
+                        htmlFor="full_name"
                         className="block text-sm font-medium text-gray-700 mb-2"
                       >
                         Full Name
                       </label>
                       <input
                         type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
+                        id="full_name"
+                        name="full_name"
                         required
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F4C81] focus:border-transparent outline-none transition-all"
                         placeholder="John Doe"
@@ -135,8 +149,6 @@ const ContactUs = () => {
                         type="email"
                         id="email"
                         name="email"
-                        value={formData.email}
-                        onChange={handleChange}
                         required
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F4C81] focus:border-transparent outline-none transition-all"
                         placeholder="john@example.com"
@@ -156,8 +168,6 @@ const ContactUs = () => {
                         type="tel"
                         id="phone"
                         name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
                         required
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F4C81] focus:border-transparent outline-none transition-all"
                         placeholder="+91 98765 43210"
@@ -173,8 +183,6 @@ const ContactUs = () => {
                       <select
                         id="subject"
                         name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F4C81] focus:border-transparent outline-none transition-all bg-white"
                       >
                         <option value="">Select a topic</option>
@@ -197,8 +205,6 @@ const ContactUs = () => {
                       id="message"
                       name="message"
                       rows="5"
-                      value={formData.message}
-                      onChange={handleChange}
                       required
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F4C81] focus:border-transparent outline-none transition-all resize-none"
                       placeholder="How can we help you?"
@@ -226,7 +232,7 @@ const ContactUs = () => {
           <div className="w-full h-[400px] bg-gray-200 rounded-xl overflow-hidden relative">
             {/* Using a static map image or iframe placeholder since we don't have a real API key */}
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224345.8392319286!2d77.06889754721636!3d28.527280325863146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x37205b715389640!2sDelhi!5e0!3m2!1sen!2sin!4v1709650000000!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15068.784232356507!2d72.8055!3d19.4563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7a99f3bd07371%3A0x6e7606e1236165e3!2sVirar%20East%2C%20Virar%2C%20Maharashtra%20401305!5e0!3m2!1sen!2sin!4v1709650000000!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}

@@ -10,6 +10,7 @@ import BusinessLoan from "./components/LoanPages/BusinessLoan";
 import BalanceTransfer from "./components/LoanPages/BalanceTransfer";
 import ContactUs from "./components/MainPages/ContactUs";
 import Footer from "./components/MainPages/Footer";
+import TermsAndConditions from "./components/MainPages/TermsAndConditions";
 
 import { ApplyProvider } from "./context/ApplyContext";
 import ApplyModal from "./components/MainPages/ApplyModal";
@@ -63,6 +64,10 @@ const App = () => {
               />
               <Route path="/contact" element={<ContactUs />} />
               <Route path="/about" element={<About />} />
+              <Route
+                path="/terms-and-conditions"
+                element={<TermsAndConditions />}
+              />
               <Route
                 path="/emi-calculator"
                 element={
