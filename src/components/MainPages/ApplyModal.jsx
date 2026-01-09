@@ -22,26 +22,49 @@ const ApplyModal = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Submitted:", formData);
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitted(true);
-      setTimeout(() => {
-        setIsSubmitted(false);
-        closeModal();
-        setFormData({
-          name: "",
-          phone: "",
-          email: "",
-          loanType: "Personal Loan",
-          loanAmount: "",
-          city: "",
-          monthlyIncome: "",
-        });
-      }, 2000);
-    }, 1000);
+
+    // Add access key to payload
+    const payload = {
+      access_key: "191a8cf1-dda6-43f4-a2eb-c8f5bf698fef",
+      ...formData,
+    };
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSubmitted(true);
+        setTimeout(() => {
+          setIsSubmitted(false);
+          closeModal();
+          setFormData({
+            name: "",
+            phone: "",
+            email: "",
+            loanType: "Personal Loan",
+            loanAmount: "",
+            city: "",
+            monthlyIncome: "",
+          });
+        }, 3000);
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting form", error);
+      alert("An error occurred. Please try again later.");
+    }
   };
 
   return (
