@@ -24,7 +24,7 @@ const AboutUsSection = () => {
 
             <p className="text-lg text-[var(--color-text-primary)] leading-relaxed text-justify">
               At Crdtlin Capital, we believe that access to credit should be
-              simple, transparent, and dignified. Founded in 2025, we have
+              simple, transparent, and dignified. Founded in 2021, we have
               helped thousands of individuals and businesses bridge the gap
               between their dreams and reality. Our mission is to provide
               financial solutions that are not just products, but pathways to

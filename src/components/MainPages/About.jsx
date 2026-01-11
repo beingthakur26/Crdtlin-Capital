@@ -33,7 +33,7 @@ const About = () => {
               Our Mission
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed mb-6">
-              Founded in 2025, Crdtlin Capital started with a simple vision: to
+              Founded in 2021, Crdtlin Capital started with a simple vision: to
               make borrowing effortless. We saw the complexities and delays in
               traditional banking and built a digital-first platform that puts
               the customer first.

@@ -7,12 +7,15 @@ import {
   Briefcase,
   Home,
   User,
+  ArrowRightLeft,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 import { useApply } from "../../context/ApplyContext";
 
 const HeroSection = () => {
   const { openModal } = useApply();
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -31,7 +34,25 @@ const HeroSection = () => {
         "Age: 21-60 Years",
         "Credit Score: 700+",
       ],
-      cta: "Get Instant Cash",
+      cta: "Apply Now",
+      path: "/services/personal-loan",
+    },
+    {
+      id: 4,
+      type: "Balance Transfer",
+      headline: "Pay Less, Save More",
+      subhead:
+        "Transfer your outstanding loan balances to us at lower interest rates.",
+      icon: <ArrowRightLeft className="w-12 h-12 text-purple-400" />,
+      image:
+        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1772&q=80",
+      criteria: [
+        "Existing Loan: ₹1L+",
+        "Track Record: 12+ EMIs",
+        "Credit Score: 750+",
+      ],
+      cta: "Transfer Now",
+      path: "/services/balance-transfer",
     },
     {
       id: 2,
@@ -48,6 +69,7 @@ const HeroSection = () => {
         "Max Tenure: 30 Years",
       ],
       cta: "Check Rates",
+      path: "/services/home-loan",
     },
     {
       id: 3,
@@ -60,6 +82,7 @@ const HeroSection = () => {
         "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80",
       criteria: ["Turnover: ₹5L+", "Vintage: 3 Years", "Profitable: 2 Years"],
       cta: "Grow Business",
+      path: "/services/business-loan",
     },
   ];
 
@@ -156,7 +179,10 @@ const HeroSection = () => {
                       {slide.cta}
                       <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
                     </button>
-                    <button className="flex items-center justify-center gap-3 bg-white/10 text-white border border-white/30 px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all w-full sm:w-auto backdrop-blur-sm">
+                    <button
+                      onClick={() => navigate(slide.path)}
+                      className="flex items-center justify-center gap-3 bg-white/10 text-white border border-white/30 px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all w-full sm:w-auto backdrop-blur-sm"
+                    >
                       Learn More
                     </button>
                   </div>

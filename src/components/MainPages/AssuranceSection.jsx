@@ -89,10 +89,10 @@ const AssuranceSection = () => {
               <Building2 className="w-10 h-10 text-[var(--color-cta)]" />
             </div>
             <h3 className="text-4xl font-extrabold text-[var(--color-brand)] mb-2">
-              <AnimatedCounter target={30} suffix="+" />
+              <AnimatedCounter target={150} suffix="+" />
             </h3>
             <p className="text-gray-500 font-medium uppercase tracking-wider text-sm">
-              Affiliated Banks
+              Affiliated Banks and NBFCs
             </p>
           </div>
 

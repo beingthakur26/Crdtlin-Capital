@@ -18,7 +18,7 @@ import ApplyModal from "./components/MainPages/ApplyModal";
 import EMICalculator from "./components/MainPages/EMICalculator";
 import WhyChooseUs from "./components/MainPages/WhyChooseUs";
 import AboutUsSection from "./components/MainPages/AboutUsSection";
-import OurPartners from "./components/MainPages/OurPartners";
+
 import Testimonials from "./components/MainPages/Testimonials";
 import About from "./components/MainPages/About";
 import ScrollToTop from "./components/MainPages/ScrollToTop";
@@ -44,7 +44,6 @@ const App = () => {
                     <EMICalculator />
                     <WhyChooseUs />
                     <AboutUsSection />
-                    <OurPartners />
                   </>
                 }
               />

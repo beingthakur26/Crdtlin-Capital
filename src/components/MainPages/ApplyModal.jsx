@@ -172,6 +172,7 @@ const ApplyModal = () => {
                     <option value="Personal Loan">Personal Loan</option>
                     <option value="Home Loan">Home Loan</option>
                     <option value="Business Loan">Business Loan</option>
+                    <option value="Balance Transfer">Balance Transfer</option>
                   </select>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
