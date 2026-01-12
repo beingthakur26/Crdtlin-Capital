@@ -20,26 +20,18 @@ const HeroSection = () => {
 
       {/* Content - Centered */}
       <div className="relative z-10 w-[70%] max-w-7xl mx-auto px-4 flex flex-col items-center text-center gap-6 pt-20">
-        {/* Badge/Tagline */}
-        <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full justify-center">
-          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-          <span className="text-sm font-semibold tracking-wide uppercase text-blue-100">
-            Trusted by 10,000+ Businesses
-          </span>
-        </div>
-
         {/* Headline */}
         <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight drop-shadow-lg">
-          Empowering Your{" "}
+          Smart Loans. <br className="hidden md:block" />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">
-            Financial Growth
+            Trusted Decisions.
           </span>
         </h1>
 
         {/* Subhead */}
         <p className="text-xl md:text-2xl text-gray-200 leading-relaxed drop-shadow-md">
-          Seamless capital solutions tailored for your personal and business
-          needs. Experience the future of finance today.
+          Get fast, transparent, and secure loans designed for your goals. No
+          hidden charges. No stress.
         </p>
 
         {/* Buttons */}

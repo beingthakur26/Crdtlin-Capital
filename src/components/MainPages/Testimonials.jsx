@@ -1,21 +1,7 @@
-import React, { useRef } from "react";
-import { Star, User, ChevronLeft, ChevronRight } from "lucide-react";
+import React from "react";
+import { Star, User } from "lucide-react";
 
 const Testimonials = () => {
-  const scrollContainerRef = useRef(null);
-
-  const scroll = (direction) => {
-    if (scrollContainerRef.current) {
-      const { current } = scrollContainerRef;
-      const scrollAmount = 400;
-      if (direction === "left") {
-        current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-      } else {
-        current.scrollBy({ left: scrollAmount, behavior: "smooth" });
-      }
-    }
-  };
-
   const testimonials = [
     {
       name: "Rahul Sharma",
@@ -97,44 +83,29 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-50 border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12">
-          <div className="text-center md:text-left mb-6 md:mb-0 w-full md:w-auto">
-            <span className="text-[var(--color-cta)] font-semibold uppercase tracking-wider text-sm block">
-              Testimonials
-            </span>
-            <h2 className="text-4xl font-bold text-[var(--color-brand)] mt-2">
-              What Our Customers Say
-            </h2>
-          </div>
-
-          {/* Scroll Controls */}
-          <div className="flex gap-4 justify-center md:justify-end w-full md:w-auto">
-            <button
-              onClick={() => scroll("left")}
-              className="p-3 rounded-full bg-white border border-gray-200 text-[var(--color-brand)] hover:bg-[var(--color-brand)] hover:text-white transition-all shadow-md active:scale-95"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-            <button
-              onClick={() => scroll("right")}
-              className="p-3 rounded-full bg-white border border-gray-200 text-[var(--color-brand)] hover:bg-[var(--color-brand)] hover:text-white transition-all shadow-md active:scale-95"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
-          </div>
+    <section className="py-20 bg-gray-50 border-t border-gray-100 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div className="text-center">
+          <span className="text-[var(--color-cta)] font-semibold uppercase tracking-wider text-sm block">
+            Testimonials
+          </span>
+          <h2 className="text-4xl font-bold text-[var(--color-brand)] mt-2">
+            What Our Customers Say
+          </h2>
         </div>
+      </div>
 
-        {/* Horizontal Scroll Container */}
-        <div
-          ref={scrollContainerRef}
-          className="flex overflow-x-auto gap-6 pb-8 px-4 no-scrollbar snap-x snap-mandatory scroll-smooth"
-        >
-          {testimonials.map((item, index) => (
+      {/* Marquee Container */}
+      <div className="relative w-full overflow-hidden">
+        {/* Gradients for fade effect at edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-gray-50 to-transparent z-10"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-gray-50 to-transparent z-10"></div>
+
+        <div className="flex animate-marquee gap-6 w-max hover:[animation-play-state:paused]">
+          {[...testimonials, ...testimonials].map((item, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-80 md:w-96 bg-white p-8 rounded-2xl shadow-lg border border-gray-100 snap-center transform hover:-translate-y-1 transition-transform duration-300"
+              className="flex-shrink-0 w-80 md:w-96 bg-white p-8 rounded-2xl shadow-lg border border-gray-100"
             >
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
