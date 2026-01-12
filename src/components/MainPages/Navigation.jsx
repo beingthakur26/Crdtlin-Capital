@@ -15,7 +15,7 @@ const Navigation = () => {
         <img
           src="/crdtlin website.jpg"
           alt="Crdtlin Capital Logo"
-          className="h-[40px] md:h-[50px] w-auto object-contain rounded-full"
+          className="h-[40px] w-[40px] md:h-[50px] md:w-[50px] object-cover rounded-full"
         />
         <h1 className="text-white font-bold text-xl md:text-2xl">
           Crdtlin Capital

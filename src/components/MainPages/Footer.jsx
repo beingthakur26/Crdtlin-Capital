@@ -13,7 +13,7 @@ const Footer = () => {
               <img
                 src="/crdtlin website.jpg"
                 alt="Crdtlin Capital Logo"
-                className="h-12 w-12 object-contain rounded-full bg-white p-1"
+                className="h-12 w-12 object-cover rounded-full bg-white p-1"
               />
               <h2 className="text-2xl font-bold">Crdtlin Capital</h2>
             </div>
