@@ -69,36 +69,38 @@ const ApplyModal = () => {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in-up">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden relative">
+      <div className="bg-gray-100 rounded-2xl shadow-2xl w-full max-w-md overflow-hidden relative">
         <button
           onClick={closeModal}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+          className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition-colors"
         >
-          <X className="w-6 h-6" />
+          <X className="w-5 h-5" />
         </button>
 
-        <div className="p-8">
-          <div className="text-center mb-6">
-            <h2 className="text-3xl font-bold text-[var(--color-brand)]">
-              Apply Now
+        <div className="p-6">
+          <div className="text-left mb-4">
+            <h2 className="text-xl font-bold text-gray-900">
+              Request a Callback
             </h2>
-            <p className="text-[var(--color-text-primary)] mt-2">
-              Get one step closer to your financial goal.
+            <p className="text-gray-500 text-xs mt-1">
+              Share a few details and our team will get in touch shortly.
             </p>
           </div>
 
           {isSubmitted ? (
-            <div className="flex flex-col items-center justify-center py-12 text-center animate-pulse-slow">
-              <CheckCircle className="w-16 h-16 text-green-500 mb-4" />
-              <h3 className="text-xl font-bold text-gray-800">
+            <div className="flex flex-col items-center justify-center py-8 text-center animate-pulse-slow">
+              <CheckCircle className="w-12 h-12 text-green-500 mb-3" />
+              <h3 className="text-lg font-bold text-gray-800">
                 Application Received!
               </h3>
-              <p className="text-gray-600">We will contact you shortly.</p>
+              <p className="text-sm text-gray-600">
+                We will contact you shortly.
+              </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-3">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-xs font-medium text-gray-600 mb-1">
                   Full Name
                 </label>
                 <input
@@ -107,28 +109,73 @@ const ApplyModal = () => {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--color-brand)] focus:border-transparent outline-none transition-all"
-                  placeholder="John Doe"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all bg-white text-sm"
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-medium text-gray-600 mb-1">
+                  Mobile Number
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  required
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all bg-white text-sm"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-gray-600 mb-1">
+                  Email Address{" "}
+                  <span className="text-gray-400">(optional)</span>
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all bg-white text-sm"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-gray-600 mb-1">
+                  Loan Amount (₹){" "}
+                  <span className="text-gray-400">(optional)</span>
+                </label>
+                <input
+                  type="number"
+                  name="loanAmount"
+                  max="500000000"
+                  value={formData.loanAmount}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all bg-white text-sm"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-gray-600 mb-1">
+                  Loan Type
+                </label>
+                <select
+                  name="loanType"
+                  value={formData.loanType}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all bg-white text-sm"
+                >
+                  <option value="Personal Loan">Personal Loan</option>
+                  <option value="Home Loan">Home Loan</option>
+                  <option value="Business Loan">Business Loan</option>
+                  <option value="Balance Transfer">Balance Transfer</option>
+                </select>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    required
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--color-brand)] focus:border-transparent outline-none transition-all"
-                    placeholder="123-456-7890"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-xs font-medium text-gray-600 mb-1">
                     City
                   </label>
                   <input
@@ -137,80 +184,28 @@ const ApplyModal = () => {
                     required
                     value={formData.city}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--color-brand)] focus:border-transparent outline-none transition-all"
-                    placeholder="New York"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all bg-white text-sm"
                   />
                 </div>
-              </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--color-brand)] focus:border-transparent outline-none transition-all"
-                  placeholder="john@example.com"
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Loan Type
+                  <label className="block text-xs font-medium text-gray-600 mb-1">
+                    Monthly Income
                   </label>
-                  <select
-                    name="loanType"
-                    value={formData.loanType}
+                  <input
+                    type="number"
+                    name="monthlyIncome"
+                    required
+                    value={formData.monthlyIncome}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--color-brand)] focus:border-transparent outline-none transition-all"
-                  >
-                    <option value="Personal Loan">Personal Loan</option>
-                    <option value="Home Loan">Home Loan</option>
-                    <option value="Business Loan">Business Loan</option>
-                    <option value="Balance Transfer">Balance Transfer</option>
-                  </select>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Loan Amount (₹)
-                    </label>
-                    <input
-                      type="number"
-                      name="loanAmount"
-                      required
-                      max="500000000"
-                      value={formData.loanAmount}
-                      onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--color-brand)] focus:border-transparent outline-none transition-all"
-                      placeholder="Ex: 500000"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Monthly Income (₹)
-                    </label>
-                    <input
-                      type="number"
-                      name="monthlyIncome"
-                      required
-                      value={formData.monthlyIncome}
-                      onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--color-brand)] focus:border-transparent outline-none transition-all"
-                      placeholder="5000"
-                    />
-                  </div>
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all bg-white text-sm"
+                  />
                 </div>
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-[var(--color-cta)] text-white font-bold py-3 rounded-xl mt-6 hover:shadow-lg hover:brightness-110 transition-all transform hover:-translate-y-0.5"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl mt-4 text-sm shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5"
               >
                 Submit Application
               </button>

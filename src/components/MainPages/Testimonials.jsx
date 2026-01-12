@@ -1,7 +1,21 @@
-import React from "react";
-import { Star, User } from "lucide-react";
+import React, { useRef } from "react";
+import { Star, User, ChevronLeft, ChevronRight } from "lucide-react";
 
 const Testimonials = () => {
+  const scrollContainerRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (scrollContainerRef.current) {
+      const { current } = scrollContainerRef;
+      const scrollAmount = 400;
+      if (direction === "left") {
+        current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+      } else {
+        current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      }
+    }
+  };
+
   const testimonials = [
     {
       name: "Rahul Sharma",
@@ -38,22 +52,85 @@ const Testimonials = () => {
       comment:
         "Professional and efficient. I applied online and got a call within 30 minutes. The disbursement happened within 24 hours. Fantastic service.",
     },
+    {
+      name: "Anjali Mehta",
+      location: "Pune",
+      rating: 5,
+      comment:
+        "I was skeptical about online loans, but Crdtlin changed my mind. Simple, secure, and fast. The entire process was digital.",
+    },
+    {
+      name: "Rohit Khanna",
+      location: "Chandigarh",
+      rating: 4,
+      comment:
+        "Good rates for balance transfer. Helped me save on my monthly EMI significantly. The team was very helpful.",
+    },
+    {
+      name: "Meera Iyer",
+      location: "Chennai",
+      rating: 5,
+      comment:
+        "Excellent customer service. They understood my business requirements and offered a tailored solution that helped me grow.",
+    },
+    {
+      name: "Suresh Gupta",
+      location: "Kolkata",
+      rating: 5,
+      comment:
+        "The best thing about Crdtlin is their support. They explained every clause in detail. No surprises later. Very trustworthy.",
+    },
+    {
+      name: "Kavita Rao",
+      location: "Indore",
+      rating: 4,
+      comment:
+        "Applied for a small business loan. Document collection was done at my doorstep. Very convenient and hassle-free service.",
+    },
+    {
+      name: "Arjun Nair",
+      location: "Kochi",
+      rating: 5,
+      comment:
+        "Interest rates are lower than most banks. Plus, the online account management is very easy to use to track my loan.",
+    },
   ];
 
   return (
     <section className="py-20 bg-gray-50 border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <span className="text-[var(--color-cta)] font-semibold uppercase tracking-wider text-sm">
-            Testimonials
-          </span>
-          <h2 className="text-4xl font-bold text-[var(--color-brand)] mt-2">
-            What Our Customers Say
-          </h2>
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12">
+          <div className="text-center md:text-left mb-6 md:mb-0 w-full md:w-auto">
+            <span className="text-[var(--color-cta)] font-semibold uppercase tracking-wider text-sm block">
+              Testimonials
+            </span>
+            <h2 className="text-4xl font-bold text-[var(--color-brand)] mt-2">
+              What Our Customers Say
+            </h2>
+          </div>
+
+          {/* Scroll Controls */}
+          <div className="flex gap-4 justify-center md:justify-end w-full md:w-auto">
+            <button
+              onClick={() => scroll("left")}
+              className="p-3 rounded-full bg-white border border-gray-200 text-[var(--color-brand)] hover:bg-[var(--color-brand)] hover:text-white transition-all shadow-md active:scale-95"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              className="p-3 rounded-full bg-white border border-gray-200 text-[var(--color-brand)] hover:bg-[var(--color-brand)] hover:text-white transition-all shadow-md active:scale-95"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
         </div>
 
         {/* Horizontal Scroll Container */}
-        <div className="flex overflow-x-auto gap-6 pb-8 px-4 no-scrollbar snap-x snap-mandatory">
+        <div
+          ref={scrollContainerRef}
+          className="flex overflow-x-auto gap-6 pb-8 px-4 no-scrollbar snap-x snap-mandatory scroll-smooth"
+        >
           {testimonials.map((item, index) => (
             <div
               key={index}

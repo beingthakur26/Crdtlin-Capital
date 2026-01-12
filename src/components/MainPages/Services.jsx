@@ -38,6 +38,18 @@ const Services = () => {
       link: "/services/personal-loan",
     },
     {
+      title: "Balance Transfer",
+      icon: <ArrowRightLeft className="w-8 h-8 text-[var(--color-cta)]" />,
+      description:
+        "Reduce your EMI burden by transferring your existing high-interest loans to us. Enjoy lower interest rates and better terms.",
+      features: [
+        "Lower interest rates",
+        "Reduce monthly EMI",
+        "Top-up loan facility available",
+      ],
+      link: "/services/balance-transfer",
+    },
+    {
       title: "Home Loan",
       icon: <Home className="w-8 h-8 text-[var(--color-cta)]" />,
       description:
@@ -60,18 +72,6 @@ const Services = () => {
         "Flexible plans tailored to growth",
       ],
       link: "/services/business-loan",
-    },
-    {
-      title: "Balance Transfer",
-      icon: <ArrowRightLeft className="w-8 h-8 text-[var(--color-cta)]" />,
-      description:
-        "Reduce your EMI burden by transferring your existing high-interest loans to us. Enjoy lower interest rates and better terms.",
-      features: [
-        "Lower interest rates",
-        "Reduce monthly EMI",
-        "Top-up loan facility available",
-      ],
-      link: "/services/balance-transfer",
     },
   ];
 
