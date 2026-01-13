@@ -11,6 +11,7 @@ import BalanceTransfer from "./components/LoanPages/BalanceTransfer";
 import ContactUs from "./components/MainPages/ContactUs";
 import Footer from "./components/MainPages/Footer";
 import TermsAndConditions from "./components/MainPages/TermsAndConditions";
+import PrivacyPolicy from "./components/MainPages/PrivacyPolicy";
 
 import { ApplyProvider } from "./context/ApplyContext";
 import ApplyModal from "./components/MainPages/ApplyModal";
@@ -63,6 +64,7 @@ const Layout = () => {
               path="/terms-and-conditions"
               element={<TermsAndConditions />}
             />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route
               path="/emi-calculator"
               element={
