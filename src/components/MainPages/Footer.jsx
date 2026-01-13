@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Instagram, Linkedin, MapPin, Phone, Mail } from "lucide-react";
+import logo from "../../assets/logo.jpg";
 
 const Footer = () => {
   return (
@@ -11,7 +12,7 @@ const Footer = () => {
           <div className="space-y-6">
             <div className="flex items-center gap-3">
               <img
-                src="/crdtlin website.jpg"
+                src={logo}
                 alt="Crdtlin Capital Logo"
                 className="h-12 w-12 object-cover rounded-full bg-white p-1"
               />

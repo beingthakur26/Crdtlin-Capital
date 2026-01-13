@@ -23,62 +23,68 @@ import Testimonials from "./components/MainPages/Testimonials";
 import About from "./components/MainPages/About";
 import ScrollToTop from "./components/MainPages/ScrollToTop";
 
+import { useLocation } from "react-router-dom";
+
+const Layout = () => {
+  const location = useLocation();
+
+  return (
+    <div className="min-h-screen bg-[var(--color-bg)] flex flex-col">
+      <Navigation />
+      <ApplyModal />
+      <div className="flex-grow">
+        <div key={location.pathname} className="animate-fade-in-up">
+          <Routes location={location}>
+            <Route
+              path="/"
+              element={
+                <>
+                  <HeroSection />
+                  <AssuranceSection />
+                  <Testimonials />
+                  <Services />
+                  <EMICalculator />
+                  <WhyChooseUs />
+                  <AboutUsSection />
+                </>
+              }
+            />
+            {/* <Route path="/services" element={<Services />} /> - Removed as it is now on Home */}
+            <Route path="/services/personal-loan" element={<PersonalLoan />} />
+            <Route path="/services/home-loan" element={<HomeLoan />} />
+            <Route path="/services/business-loan" element={<BusinessLoan />} />
+            <Route
+              path="/services/balance-transfer"
+              element={<BalanceTransfer />}
+            />
+            <Route path="/contact" element={<ContactUs />} />
+            <Route path="/about" element={<About />} />
+            <Route
+              path="/terms-and-conditions"
+              element={<TermsAndConditions />}
+            />
+            <Route
+              path="/emi-calculator"
+              element={
+                <div className="pt-20">
+                  <EMICalculator />
+                </div>
+              }
+            />
+          </Routes>
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
+};
+
 const App = () => {
   return (
     <ApplyProvider>
       <Router>
         <ScrollToTop />
-        <div className="min-h-screen bg-[var(--color-bg)] flex flex-col">
-          <Navigation />
-          <ApplyModal />
-          <div className="flex-grow">
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <>
-                    <HeroSection />
-                    <AssuranceSection />
-                    <Testimonials />
-                    <Services />
-                    <EMICalculator />
-                    <WhyChooseUs />
-                    <AboutUsSection />
-                  </>
-                }
-              />
-              {/* <Route path="/services" element={<Services />} /> - Removed as it is now on Home */}
-              <Route
-                path="/services/personal-loan"
-                element={<PersonalLoan />}
-              />
-              <Route path="/services/home-loan" element={<HomeLoan />} />
-              <Route
-                path="/services/business-loan"
-                element={<BusinessLoan />}
-              />
-              <Route
-                path="/services/balance-transfer"
-                element={<BalanceTransfer />}
-              />
-              <Route path="/contact" element={<ContactUs />} />
-              <Route path="/about" element={<About />} />
-              <Route
-                path="/terms-and-conditions"
-                element={<TermsAndConditions />}
-              />
-              <Route
-                path="/emi-calculator"
-                element={
-                  <div className="pt-20">
-                    <EMICalculator />
-                  </div>
-                }
-              />
-            </Routes>
-          </div>
-          <Footer />
-        </div>
+        <Layout />
       </Router>
     </ApplyProvider>
   );

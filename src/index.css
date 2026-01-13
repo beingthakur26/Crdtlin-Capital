@@ -1,18 +1,22 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
-  --color-brand: #0F4C81;
-  --color-bg: #FFFFFF;
-  --color-secondary: #E6F0FA;
+  --color-brand: #0f4c81;
+  --color-bg: #ffffff;
+  --color-secondary: #e6f0fa;
   --color-text-primary: #333333;
-  --color-cta: #FF7A00;
+  --color-cta: #ff7a00;
 }
 
 @theme {
   --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
   --animate-bounce-slow: bounceSlow 3s infinite;
   --animate-pulse-slow: pulseSlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  
+
   @keyframes fadeInUp {
     from {
       opacity: 0;
@@ -23,9 +27,10 @@
       transform: translateY(0);
     }
   }
-  
+
   @keyframes bounceSlow {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(-5%);
       animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
     }
@@ -36,19 +41,24 @@
   }
 
   @keyframes pulseSlow {
-    0%, 100% {
+    0%,
+    100% {
       opacity: 1;
     }
     50% {
-      opacity: .8;
+      opacity: 0.8;
     }
   }
 
   @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
   }
-  
+
   --animate-marquee: marquee 30s linear infinite;
 }
 
@@ -59,6 +69,6 @@
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
